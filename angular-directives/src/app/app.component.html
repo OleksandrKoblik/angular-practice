@@ -1,0 +1,18 @@
+<div class="container">
+  <h1> Angular Directives</h1>
+
+  <p [appStyle]="'red'" [dStyles]="{border: '1px solid blue', borderRadius: '5px'}">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, sed?
+  </p>
+
+  <p [appStyle]="'blue'" [dStyles]="{border: '2px solid red', borderRadius: '25px'}">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, sed?
+  </p>
+
+  <button class="btn" (click)="isVisible = !isVisible">Toogle</button>
+
+  <div class="wrap" *appCustomStructural="!isVisible">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut beatae eveniet explicabo inventore totam! Nesciunt.</p>
+  </div>
+</div>
+

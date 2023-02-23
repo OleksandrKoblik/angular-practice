@@ -1,0 +1,9 @@
+<p>ngif-else works!</p>
+
+<button (click)="toggle = !toggle">Toggle</button>
+
+<p *ngIf="toggle; else blueP" class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, quae.</p>
+
+<ng-template #blueP>
+  <p class="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, eaque!</p>
+</ng-template>

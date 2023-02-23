@@ -1,0 +1,13 @@
+<p>ng-style works!</p>
+
+<button (click)="backgroundToggle = !backgroundToggle">Toggle</button>
+
+<div [ngStyle]="{
+  width: '200px',
+  height: '200px',
+  borderRadius: '5px',
+  border: '1px solid black',
+  background: backgroundToggle ? 'red' : 'blue'
+}">
+
+</div>

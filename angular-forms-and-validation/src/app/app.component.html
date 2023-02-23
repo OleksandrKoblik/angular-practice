@@ -1,0 +1,84 @@
+<div class="container">
+  <form class="card" [formGroup]="form" (click)="submit()">
+    <h1>Angular Forms</h1>
+
+    <div class="form-control">
+      <label>Email</label>
+      <input type="text" placeholder="Email" formControlName="email">
+      <div
+        *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+        class="validation"
+      >
+<!--        <pre>{{form.get('email')?.errors | json}}</pre>-->
+
+        <small *ngIf="form.get('email')?.errors?.['required']">
+          Поле не може бути порожнім
+        </small>
+
+        <small *ngIf="form.get('email')?.errors?.['email']">
+          Введіть корректний email
+        </small>
+
+        <small *ngIf="form.get('email')?.errors?.['restrictedEmail']">
+          Email {{ form.get('email')?.value }} заборонений
+        </small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label>Пароль</label>
+      <input type="password" placeholder="Пароль" formControlName="password">
+      <div
+        *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
+        class="validation"
+      >
+<!--        <pre>{{ form.get('password')?.errors | json }}</pre>-->
+
+        <small *ngIf="form.get('password')?.errors?.['required']">
+          Пароль не може бути порожнім
+        </small>
+        <small *ngIf="form.get('password')?.errors?.['minlength']">
+          Довжина паролю повинна бути не меньше {{ form.get('password')?.errors?.['minlength']?.['requiredLength']}}.
+          Зараз кількість символів {{ form.get('password')?.errors?.['minlength']?.['actualLength']}}
+        </small>
+
+      </div>
+    </div>
+
+    <div class="card" formGroupName="address">
+      <h2>Адресса</h2>
+
+      <div class="form-control">
+        <label>Країна</label>
+
+        <select formControlName="country">
+          <option value="ua">Україна</option>
+          <option value="usa">США</option>
+          <option value="po">Польща</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <input type="text" formControlName="city" placeholder="Київ">
+      </div>
+
+      <button class="btn" type="button" (click)="setCapital()">Обрати столицю</button>
+    </div>
+
+    <div class="card" >
+      <h2>Ваші навички</h2>
+      <button class="btn" type="button" (click)="addSkill()">Додати навичку</button>
+
+      <div class="form-control">
+        <label>Навичка </label>
+        <input type="text" >
+      </div>
+    </div>
+
+    <button class="btn" type="submit" [disabled]="form.invalid">Надіслати</button>
+
+  </form>
+</div>
+
+
+

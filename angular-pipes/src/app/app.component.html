@@ -1,0 +1,114 @@
+<div class="container">
+  <h1> Angular pipes</h1>
+  <div [ngStyle]="{border:'1px solid black', padding: '20px'}">
+    <p [ngStyle]="{margin: '20px',fontSize: '24px'}"><strong>Звичайні пайпи</strong></p>
+      <div>
+        <p>
+          {{ e | number:'1.1-3' }}
+        </p>
+
+        <p>
+          {{ e | number:'1.0-0' }}
+        </p>
+      </div>
+
+      <div>
+        <p>
+          {{ str  | titlecase }}
+        </p>
+
+        <p>
+          {{ str | slice:1:-2 }}
+        </p>
+      </div>
+
+      <div>
+        <p>
+          {{ date | date:'long' }}
+        </p>
+        <p>
+          {{ date | date:'dd. MM. yyyy' }}
+        </p>
+      </div>
+
+      <div>
+        <p>
+          {{ float | currency}}
+        </p>
+        <p>
+          {{ float | percent:'2.0-0' }}
+        </p>
+      </div>
+
+      <div>
+        <div>
+          <pre>
+            {{ obj | json }}
+          </pre>
+          <p>
+            {{ obj | json }}
+          </p>
+        </div>
+      </div>
+  </div>
+
+  <div [ngStyle]="{border:'1px solid black', padding: '20px',marginTop: '20px'}">
+    <p [ngStyle]="{margin: '20px',fontSize: '24px'}">Створені пайпи</p>
+    <div>
+      <p>
+        {{ 20 | mult }}
+      </p>
+      <p>
+        {{ 20 | mult:5 }}
+      </p>
+      <p>
+        {{ 20 | mult:13 }}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        {{ 'hello world' | exMarks }}
+      </p>
+    </div>
+
+  </div>
+    <div [ngStyle]="{border:'1px solid black', padding: '20px',marginTop: '20px'}">
+      <p [ngStyle]="{margin: '20px',fontSize: '24px'}">Фільтрація списків</p>
+
+      <button class="btn" (click)="searchField = 'title'">title</button>
+      <button class="btn" (click)="searchField = 'text'">text</button>
+
+      <hr>
+
+      <button class="btn" (click)="addPost()">Add post</button>
+
+      <input type="text" [(ngModel)]="search">
+
+        <div
+        class="card"
+        *ngFor="let p of posts | filter:search:searchField"
+        >
+          <h2>{{ p.title }}</h2>
+          <p>{{ p.text }}</p>
+        </div>
+    </div>
+
+  <div [ngStyle]="{border:'1px solid black', padding: '20px',marginTop: '20px'}">
+    <p [ngStyle]="{margin: '20px',fontSize: '24px'}">Pipe async</p>
+
+    <div>
+      <p>
+        Wait for it...  {{ p | async }}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        Date: {{ date$ | async | date:'HH:mm:ss' }}
+      </p>
+    </div>
+
+  </div>
+
+</div>

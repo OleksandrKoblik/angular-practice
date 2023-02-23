@@ -1,0 +1,23 @@
+<button (click)="animate()">Animate</button>
+<button (click)="boxState = 'special'">Set Special Animation</button>
+<button (click)="visible = !visible">Toggle Visibility</button>
+
+<hr />
+
+<div class="wrap">
+
+  <div
+    class="box"
+    *ngIf="visible"
+    [@box]="boxState"
+    (@box.start)="animationStarted($event)"
+    (@box.done)="animationDane($event)"
+    >
+    <h4>{{ boxState | uppercase }}</h4>
+  </div>
+
+  <hr />
+
+  <app-animate></app-animate>
+
+</div>

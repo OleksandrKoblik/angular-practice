@@ -1,0 +1,10 @@
+<p>event-binding works!</p>
+
+<button (click)="onClick()">Click me</button>
+<input
+  type="text"
+  (keyup.enter)="onInput($event)"
+  (blur)="onBlur(myInput.value)"
+  #myInput
+>
+<p><strong>{{inputValue}}</strong></p>
